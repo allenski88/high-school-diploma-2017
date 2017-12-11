@@ -1,0 +1,92 @@
+@import "compass";
+@import "bootstrap";
+
+body {
+	margin: 0;
+	padding: 0;
+	@include container-fixed();
+	@media (min-width: $screen-sm-min) {
+		width: $container-sm;
+	}
+	@media (min-width: $screen-md-min) {
+		width: $container-md;
+	}
+	@media (min-width: $screen-lg-min) {
+		width: $container-lg;
+	}
+	background-color: $gray-darker;
+	color: $gray-lighter;
+
+	.site-header {
+		height: 90px;
+		@include make-row();
+		& > * {
+			vertical-align: middle;
+			top: 60%;
+			transform: translateY(-50%);
+			line-height: 16px;
+		}
+		.site-title {
+			@include make-sm-column(8);
+			h3 {
+				margin: 0
+			}
+		}
+		.progress-section {
+			@include make-sm-column(4);
+			font-size: 0;
+			.bar-wrap {
+				display: inline-block;
+				vertical-align: middle;
+				width: calc(100% - 70px);
+				.progress {
+					height: 14px;
+					margin: 0;
+					.progress-bar {
+						width: 0;
+						animation: progress 1.5s ease-in-out forwards;
+						background-color: #82C31F;
+					}
+				}
+			}
+			.numbers {
+				display: inline-block;
+				vertical-align: middle;
+				width: 70px;
+				font-size: 16px;
+				text-align: right;
+				box-sizing: border-box;
+				span {
+					color: #82C31F;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	.filters {
+		padding: 9px 12px;
+		@include make-sm-column(12);
+		background-color: $gray-dark;
+		border-radius: $border-radius-base;
+		border: 2px solid $gray;
+		box-sizing: border-radius;
+		& > * {
+			display: inline-block;
+		}
+		& > span {
+			padding-left: 7px;
+			padding-right: 20px;
+		}
+	}
+}
+
+
+
+@keyframes progress {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes show  {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
