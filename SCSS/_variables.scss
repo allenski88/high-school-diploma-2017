@@ -7,21 +7,43 @@ $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")
 // --------------------------------------------------
 
 
+
+//-animation duration
+$dur: 300ms;
+
+@mixin text-shadow($opacity: 0.3) {
+	text-shadow: 0 1px 3px rgba(0,0,0,$opacity)
+}
+@mixin box-shadow($opacity: 0.3) {
+	box-shadow: 0 1px 3px rgba(0,0,0,$opacity)
+}
+@mixin transAll($duration: $dur, $delay: 0ms) {
+	transition: all $duration $delay
+}
+
+
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
+
+$green:					#82C31F;
+$darkgreen:				#417720;
+
+$blue:					#249ED6;
+$darkblue:				#0E669E;
 
 $gray-darker:            lighten(#000, 13.5%) !default; // #222
 $gray-dark:              lighten(#000, 20%) !default;   // #333
 $gray:                   lighten(#000, 33.5%) !default; // #555
 $gray-light:             lighten(#000, 60%) !default;   // #999
+$gray-d:				 #DDDDDD;
 $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 
-$brand-primary:         #428bca !default;
+$brand-primary:         $darkblue !default;
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
-$brand-danger:          #d9534f !default;
+$brand-danger:          #C52248 !default;
 
 
 //== Scaffolding

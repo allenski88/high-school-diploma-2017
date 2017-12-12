@@ -1,0 +1,76 @@
+.site-header {
+	height: 120px;
+	@media (min-width: $screen-sm-min) {
+		height: 90px;
+	}
+	@include make-row();
+    margin-left: -21px;
+    margin-right: -21px;
+	& > * {
+		vertical-align: middle;
+		top: 50%;
+		transform: translateY(-50%);
+		line-height: 16px;
+		@media (min-width: $screen-sm-min) {
+			top: 60%;
+		}
+	}
+	.site-title {
+		@include make-sm-column(8);
+		h3 {
+			margin: 0;
+			font-size: 20px;
+			@media (min-width: $screen-xs-min) {
+				font-size: 24px;
+			}
+		}
+	}
+	.progress-section {
+		@include make-xs-column(9);
+		@media (min-width: $screen-xs-min) {
+			@include make-xs-column(6);
+		}
+		@media (min-width: $screen-sm-min) {
+			@include make-sm-column(4);
+		}
+		font-size: 0;
+		letter-spacing: 0;
+		.bar-wrap {
+			display: inline-block;
+			vertical-align: middle;
+			width: calc(100% - 70px);
+			.progress {
+				height: 14px;
+				margin: 0;
+				background-color: white;
+				border: 1.25px solid $gray-d;
+				@include transAll;
+				.dark {
+					background-color: $gray-light;
+					border-color: $gray;
+				}
+				.progress-bar {
+					width: 0;
+					animation: progress 1.5s ease-in-out forwards;
+					background-color: $green;
+				}
+			}
+		}
+		.numbers {
+			display: inline-block;
+			vertical-align: middle;
+			width: 70px;
+			font-size: 14px;
+			text-align: right;
+			box-sizing: border-box;
+			span {
+				color: $darkgreen;
+				font-weight: bold;
+				@include transAll;
+				.dark & {
+					color: $green;
+				}
+			}
+		}
+	}
+}
