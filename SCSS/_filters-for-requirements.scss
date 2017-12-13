@@ -78,6 +78,9 @@
 		@media (min-width: $screen-md-min) {
 			@include make-md-column(7.5);
 		}
+		@media (min-width: $screen-lg-min) {
+			@include make-lg-column(6);
+		}
 		& > span:first-child {
 			display: block;
 			min-width: 100%;
