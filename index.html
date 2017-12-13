@@ -8,12 +8,77 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-	<link rel="stylesheet" href="css/main.css">
+	<!-- <link rel="stylesheet" href="./css/main.css"> -->
+	<link rel="stylesheet" href="http://www.allenski.com/high-school-diploma-2017/CSS/main.css">
 	<script type="text/javascript">
 		$(document).ready(function() {
 			//--- THEME SWITCHER ---\\
+
+
+
+			function setCookie(cname,cvalue,exdays) {
+				var d = new Date();
+				d.setTime(d.getTime() + (exdays*24*60*60*1000));
+				var expires = "expires=" + d.toGMTString();
+				document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+			}
+			function getCookie(cname) {
+				var name = cname + "=";
+				var ca = document.cookie.split(';');
+				for(var i = 0; i < ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0) == ' ') {
+						c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) {
+						return c.substring(name.length, c.length);
+					}
+				}
+				return "";
+			}
+			function checkCookie() {
+				var cookie=getCookie("isDarkMode");
+				if (cookie != "") {
+					if (cookie == 1) {
+						if ($("body").hasClass("dark")) {
+							//
+						} else {
+							$("body").addClass("dark");
+						}
+						isDark = true;
+					} else {
+						if ($("body").hasClass("dark")) {
+							$("body").removeClass("dark");
+							if ($("#theme-switch").is(':checked')) {
+							} else {
+								$('#theme-switch').bootstrapToggle('on');
+							}
+						} else {
+							if ($("#theme-switch").is(':checked')) {
+							} else {
+								if (onLoad) {
+									$('#theme-switch').bootstrapToggle('on');
+								}
+							}
+						}
+						isDark = false;
+					}
+				} else {
+					if ($("body").hasClass("dark")) {
+						isDark = true;
+					}
+				}
+				onLoad = false;
+			}
+
+			var isDark = false,
+				onLoad = true;
+			checkCookie();
 			$(".toggle.btn").click(function() {
+				isDark ^= true;
+				setCookie("isDarkMode", isDark, 1);
 				$("body").toggleClass("dark");
+				checkCookie();
 			});
 		});
 	</script>
@@ -109,6 +174,6 @@
 			<button class="btn btn-primary submit">Call To Action</button>
 		</div>
 	</div>
-	<input type="checkbox" class="theme-switch" data-toggle="toggle">
+	<input type="checkbox" id="theme-switch" data-toggle="toggle">
 </body>
 </html>
