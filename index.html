@@ -44,6 +44,11 @@
 							//
 						} else {
 							$("body").addClass("dark");
+							if ($("#theme-switch").is(':checked')) {
+								if (onLoad) {
+									$('#theme-switch').bootstrapToggle('off');
+								}
+							}
 						}
 						isDark = true;
 					} else {
@@ -55,6 +60,7 @@
 							}
 						} else {
 							if ($("#theme-switch").is(':checked')) {
+								//
 							} else {
 								if (onLoad) {
 									$('#theme-switch').bootstrapToggle('on');
@@ -83,7 +89,7 @@
 		});
 	</script>
 </head>
-<body class="dark">
+<body>
 	<header class="site-header">
 		<div class="site-title">
 			<h3>High-School Diploma 2017</h3>
@@ -174,6 +180,6 @@
 			<button class="btn btn-primary submit">Call To Action</button>
 		</div>
 	</div>
-	<input type="checkbox" id="theme-switch" data-toggle="toggle">
+	<input type="checkbox" id="theme-switch" data-toggle="toggle" checked>
 </body>
 </html>
