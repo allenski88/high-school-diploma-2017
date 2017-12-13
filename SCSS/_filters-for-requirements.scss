@@ -71,15 +71,16 @@
 		}
 		.dropdown-menu.btn-block {
 			width: calc(100% - 15px);
+			@media (min-width: $screen-md-min) {
+				width: calc(100% - 30px);
+				margin-left: 15px;
+			}
 		}
 	}
 	.credits {
 		@include make-xs-column(12);
 		@media (min-width: $screen-md-min) {
-			@include make-md-column(7.5);
-		}
-		@media (min-width: $screen-lg-min) {
-			@include make-lg-column(6);
+			@include make-md-column(6);
 		}
 		& > span:first-child {
 			display: block;
