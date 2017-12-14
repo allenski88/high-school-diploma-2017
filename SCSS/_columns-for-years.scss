@@ -67,7 +67,8 @@
 					box-shadow:
 						0 0 0 0 rgba(0,0,0,0.0),
 						0 0 0 3px rgba(0,0,0,0.15);
-					&:hover {
+					&:hover,
+					&:focus {
 						box-shadow:
 							0 0 0 0 rgba(255,255,255,0.0),
 							0 0 0 3px rgba(255,255,255,0.15);
@@ -130,13 +131,13 @@
 			opacity: 0;
 			transform: scale(.1);
 			animation: FadeIn $dur forwards;
-			overflow: hidden;
+			//overflow: hidden;  removed for alert tooltip to not be cut off
 			outline: none;
 			border-radius: 5px;
 			white-space: nowrap;
 			&:not(.submit) {
 				background-color: white;
-				border: 1.5px solid $gray-d - 14;
+				border: 1.25px solid $gray-d - 14;
 				text-align: left;
 				&.selected,
 				&.plus {
@@ -155,12 +156,59 @@
 						background-color: $green;
 						content: "";
 					}
+					span {
+						position: relative;
+						&:after {
+							position: absolute;
+							right: 7px;
+							text-indent: 0;
+							opacity: 0.5;
+							content: "1 cr.";
+						}					
+					}
 					&:hover,
 					&:focus {
 						&:before {
 							background-color: darken($green, 6%);
 							.dark & {
 								background-color: lighten($green, 6%);
+							}
+						}
+					}
+					#warning {
+						position: absolute;
+						top: 0;
+						right: 0;
+						font-size: 0;
+						color: transparent;
+						&:before {
+							position: absolute;
+							top: 6px;
+							right: 7px;
+							height: 16px;
+							line-height: 15px;
+							font-family: FontAwesome;
+							background-color: white;
+							font-size: 16px;
+							color: $brand-danger;
+							text-indent: 0;
+							@include transAll(150ms);
+							border: 1px solid $gray-dark;
+							border-radius: 50%;
+							content: "\f06a";
+							.dark & {
+								border-color: $gray-light;
+							}
+						}
+						&:hover,
+						&:focus {
+							&:before {
+								transform: scale(1.2);
+								color: $focus-color !important;
+								border-color: black !important;
+								.dark & {
+									border-color: white !important;
+								}
 							}
 						}
 					}
@@ -214,7 +262,6 @@
 					color: $gray-d - 37;
 					.dark & {
 						color: $gray + 37;
-						border-width: 1.25px;
 					}
 				}
 				&:hover,

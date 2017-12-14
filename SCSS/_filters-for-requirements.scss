@@ -14,6 +14,9 @@
 		display: inline-block;
 		padding: 6px 0 2px;
 		line-height: 32px;
+		@media (min-width: $screen-md-min) {
+			padding: 6px 0;
+		}
 	}
 	& > span {
 		@include make-xs-column(12);
@@ -98,10 +101,17 @@
 		}
 		input[type="checkbox"],
 		input[type="radio"] {
-			width: 0;
+			width: 20px;
+			height: 20px;
+			margin-right: -25px;
 			pointer-events: none;
-			opacity: 0;
+			transition: all 300ms 0ms;
+			transform: translateY(3px);
 			@include transAll;
+			opacity: 0;
+			&:first-of-type {
+				margin-right: -20px;
+			}
 			&:checked+label:after {
 				opacity: 1;
 				transform: translateY(-52%) scale(1);

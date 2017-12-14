@@ -26,10 +26,92 @@ body {
 		@include transAll;
 	}
 }
+.tooltip.top {
+	right: 0;
+	left: -1px !important;
+	width: calc(100% + 2px);
+	margin-top: 0px;
+	opacity: 1;
+	&:before {
+		position: absolute;
+		content: "";
+		z-index: 1;
+		right: 8px;
+		bottom: -5px;
+		border-color: transparent;
+		border-style: solid;
+		border-width: 10px 10px 0;
+		border-top-color: $gray-d - 14;
+		@include transAll;
+		.dark & {
+			border-top-color: $gray;
+		}
+	}
+	.tooltip-arrow {
+		left: auto !important;
+		right: 8px;
+		bottom: -4px;
+	    z-index: 2;
+		border-top-color: white;
+		border-width: 10px 10px 0;
+		.dark & {
+			border-top-color: $gray-dark;
+		}
+	}
+	.tooltip-inner {
+		position: relative;
+		max-width: none;
+		padding: 8px 0 8px 20px;
+		line-height: 24px;
+		text-align: left;
+		background-color: white;
+		border: 1.25px solid $gray-d - 14;
+		color: #666666;
+		@include transAll;
+		white-space: normal;
+		text-indent: 0;
+		.dark & {
+			background-color: $gray-dark;
+			border-color: $gray;
+			color: $gray-lighter;
+		}
+		&:before {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 7px;
+			height: 100%;
+			background-color: $brand-danger;
+			content: "";
+		}
+		&:after {
+			position: relative;
+			display: block;
+			text-indent: 0;
+			color: $blue;
+			content: "Add one.";
+		}
+	}
+}
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 	color: $gray-darker - 16;
 	.dark & {
 		color: $gray-lighter + 16;
+	}
+}
+
+*:focus:not(.submit) {
+	color: $focus-color !important;
+	outline: none !important;
+	&[data-toggle="dropdown"] {
+		border-color: $focus-color !important;
+	}
+	&[type="checkbox"]+* {
+		outline: none !important;
+		color: $focus-color !important;
+		&:before {
+			border-color: $focus-color !important;
+		}
 	}
 }
 
@@ -51,9 +133,15 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 		background-color: $gray-darker;
 		color: $gray-lighter;
 	}
+	.btn-default {
+		border-bottom: none !important;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+	}
 	span.toggle-handle {
 		background-color: $gray-lighter;
 		border: 1.25px solid $gray-d;
+		border-bottom: none;
 		.dark & {
 			background-color: $gray-dark;
 			border-color: $gray;
